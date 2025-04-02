@@ -4,11 +4,12 @@ from db.database import get_db
 from db.schemas import EmpleadoSchema, EmpleadoFiltro
 from db.models import Empleado
 from services.empleados_service import crear_empleado, calcular_nomina, consultar_empleado
+from auth import verificar_token
 
 router = APIRouter(prefix="/empleados", tags=["Empleados"])
 
 @router.post("/")
-def registrar_empleado(empleado: EmpleadoSchema, db: Session = Depends(get_db)):
+def registrar_empleado(empleado: EmpleadoSchema, db: Session = Depends(get_db), token: str = Depends(verificar_token)):
     """
     Crear un empleado.
     """
@@ -20,7 +21,7 @@ def registrar_empleado(empleado: EmpleadoSchema, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail=str(e))
     
 @router.get("/")
-def obtener_empleado(empleado_id: EmpleadoFiltro, db: Session = Depends(get_db)):
+def obtener_empleado(empleado_id: EmpleadoFiltro, db: Session = Depends(get_db), token: str = Depends(verificar_token)):
     """
     Consulta un empleado por su ID.
     """
