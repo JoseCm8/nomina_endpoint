@@ -70,12 +70,32 @@ Para iniciar el servidor de desarrollo, ejecuta:
 
 ## Endpoints Principales
    Usuarios
-   POST /usuarios/login/: Inicia sesión y genera un token JWT.
-   GET /usuarios/perfil/: Obtiene el perfil del usuario autenticado.
+
+   POST
+   ```bash
+   /usuarios/login/
+   ```
+   Inicia sesión y genera un token JWT.
+
+   GET 
+   ```bash
+   /usuarios/perfil/
+   ```
+   Obtiene el perfil del usuario autenticado.
 
    Empleados
-   POST /empleados/: Registra un nuevo empleado.
-   GET /empleados/: Consulta un empleado por su DNI.
+
+   POST
+   ```bash
+  /empleados/
+   ```
+   Registra un nuevo empleado.
+
+   GET 
+   ```bash
+   /empleados/
+   ```
+   Consulta un empleado por su DNI.
 
 ## Pruebas
    Las pruebas están implementadas con pytest. Para ejecutarlas:
