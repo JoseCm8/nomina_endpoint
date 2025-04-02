@@ -41,18 +41,22 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
 
 2. Crea un entorno virtual e instálalo:
    python -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
+   source venv/bin/activate
+   # En Windows:
+   venv\Scripts\activate
    pip install -r requirements.txt
 
-3. Configura la base de datos en el archivo .env (ver sección Configuración).
+4. Configura la base de datos en el archivo .env.
 
-4. Crea las tablas en la base de datos:
+5. Crea las tablas en la base de datos:
    python -c "from db.database import Base, engine; Base.metadata.create_all(bind=engine)"
+
+   o ejecutar el script: "db/schema.sql"
 
 ## Ejecución
 Para iniciar el servidor de desarrollo, ejecuta:
 
-   uvicorn main:app --reload
+   uvicorn main:app --reload o fastapi dev main.py
 
    El servidor estará disponible en http://127.0.0.1:8000.
 
