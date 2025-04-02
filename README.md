@@ -60,7 +60,11 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
 ## Ejecución
 Para iniciar el servidor de desarrollo, ejecuta:
    ```bash
-   uvicorn main:app --reload o fastapi dev main.py
+   uvicorn main:app --reload 
+   ```
+   o
+   ```bash
+   fastapi dev main.py
    ```
    El servidor estará disponible en http://127.0.0.1:8000.
 
