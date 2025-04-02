@@ -38,9 +38,12 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
    cd nomina_backend
 
 2. Crea un entorno virtual e instálalo:
+   ```bash
    python -m venv venv
    source venv/bin/activate
-   # En Windows:
+   
+   En Windows:
+   ```bash
    venv\Scripts\activate
    pip install -r requirements.txt
 
