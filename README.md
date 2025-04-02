@@ -41,12 +41,12 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
    ```bash
    python -m venv venv
    source venv/bin/activate
-   
+   ```
    En Windows:
    ```bash
    venv\Scripts\activate
    pip install -r requirements.txt
-
+   ```
 4. Configura la base de datos en el archivo .env.
 
 5. Crea las tablas en la base de datos:
