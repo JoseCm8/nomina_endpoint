@@ -20,15 +20,17 @@ def calcular_nomina(empleado: Empleado) -> dict:
     if(total_devengado > (settings.VALOR_SALARIO_MINIMO * 4)):
         fondo_solidario = total_devengado * 0.01 
     salario_neto = total_devengado - (salud + pension)
-    fecha_actual = datetime.today().date()
-    dias_trabajados = (fecha_actual - empleado.fecha_ingreso).days
-    dias_vacaciones = round((dias_trabajados / 360) * 15, 2)
+    dias_vacaciones = round((empleado.dias_laborados / 360) * 15, 2)
     prima_servicio = (total_devengado * empleado.dias_laborados) / 360
+    aux_transporte_proporcional = 0
+    if(aux_transporte > 0):
+        aux_transporte_proporcional = (settings.VALOR_AUX_TRANSPORTE / 30) * empleado.dias_laborados
 
     return {
         "salario_mensual": locale.currency(empleado.salario_mensual, grouping=True),
         "salario_proporcional": locale.currency(salario_proporcional, grouping=True),
-        "aux_transporte": locale.currency(aux_transporte, grouping=True),
+        "aux_transporte_mensual": locale.currency(aux_transporte, grouping=True),
+        "aux_transporte_proporcional": locale.currency(aux_transporte_proporcional, grouping=True),
         "total_devengado": locale.currency(total_devengado, grouping=True),
         "deducciones": {"salud": locale.currency(salud, grouping=True), "pension": locale.currency(pension, grouping=True), "fondo_solidario": locale.currency(fondo_solidario, grouping=True), "total": locale.currency(salud + pension + fondo_solidario, grouping=True)},
         "salario_neto": locale.currency(salario_neto, grouping=True),
@@ -42,6 +44,8 @@ def crear_empleado(db: Session, empleado_data: EmpleadoSchema) -> Empleado:
     #Validacion valor de salario vs aplica auxilio de transporte
     if (nuevo_empleado.salario_mensual > (settings.VALOR_SALARIO_MINIMO * 2) and nuevo_empleado.aux_transporte == True):
         raise HTTPException(status_code=400, detail="Revise la informacion ingresada, no puede tener auxilio de transporte")
+    if (nuevo_empleado.salario_mensual < (settings.VALOR_SALARIO_MINIMO * 2) and nuevo_empleado.aux_transporte == False):
+        raise HTTPException(status_code=400, detail="Revise la informacion ingresada, debe tener auxilio de transporte")
     
     #Validacion logica dias trabajados vs fecha ingreso
     fecha_actual = datetime.today().date()
