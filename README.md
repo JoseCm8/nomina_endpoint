@@ -7,7 +7,6 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
 - [Características](#características)
 - [Requisitos](#requisitos)
 - [Instalación](#instalación)
-- [Configuración](#configuración)
 - [Ejecución](#ejecución)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Endpoints Principales](#endpoints-principales)
