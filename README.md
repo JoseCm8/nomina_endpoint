@@ -36,7 +36,7 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/nomina_backend.git
+   git clone https://github.com/JoseCm8/nomina_endpoint.git
    cd nomina_backend
 
 2. Crea un entorno virtual e instálalo:
