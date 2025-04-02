@@ -50,15 +50,18 @@ Esta es una API desarrollada con **FastAPI** para gestionar la nómina de emplea
 4. Configura la base de datos en el archivo .env.
 
 5. Crea las tablas en la base de datos:
+   ```bash
    python -c "from db.database import Base, engine; Base.metadata.create_all(bind=engine)"
-
-   o ejecutar el script: "db/schema.sql"
-
+   ```
+   o ejecutar el script:
+   ```bash
+   schema.sql
+   ```
 ## Ejecución
 Para iniciar el servidor de desarrollo, ejecuta:
-
+   ```bash
    uvicorn main:app --reload o fastapi dev main.py
-
+   ```
    El servidor estará disponible en http://127.0.0.1:8000.
 
 ## Endpoints Principales
@@ -74,9 +77,13 @@ Para iniciar el servidor de desarrollo, ejecuta:
    Las pruebas están implementadas con pytest. Para ejecutarlas:
 
 1. Instala las dependencias de prueba:
+   ```bash
    pip install pytest
-2. Ejecuta las pruebas:
+   ```
+3. Ejecuta las pruebas:
+   ```bash
    pytest tests/
+   ```
 
 ## Licencia
 Este proyecto está licenciado bajo la MIT License.
